@@ -1,6 +1,7 @@
 import './App.css';
 import PizzaNavbar from './Components/PizzaNavbar.js';
 import PizzaMenu from './Components/PizzaMenu.js';
+import PageLogin from './Components/PageLogin.js';
 import React, {useEffect, useState} from "react";
 import {Row,Container,Col,Navbar, Nav, Button} from 'react-bootstrap';
 import {v4 as uuidv4 } from "uuid";
@@ -16,7 +17,9 @@ function App()
         <Route exact path="/home">
           <PizzaMenu/>
         </Route>
-
+        <Route exact path="/login">
+          <PageLogin/>
+        </Route>
       </HashRouter>
       </div>
     );
