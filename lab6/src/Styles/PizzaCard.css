@@ -1,0 +1,16 @@
+.PizzaCard{
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px 0px 10px 0px;
+}
+.PizzaCard img{
+    max-height: 400px;
+}
+.PizzaCard p{
+    font-size: 1.6em;
+}
+.PizzaCard button{
+    font-size: 1.2em;
+}
