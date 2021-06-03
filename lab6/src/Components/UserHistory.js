@@ -4,23 +4,27 @@ import {Button,Table,Container} from 'react-bootstrap';
 import style from './../Styles/PizzaCart.css';
 import {getUserHistory} from './Firebase.js';
 export default function UserHistory(){
-
-    const getHistory= () =>{
-        getUserHistory().then(x=>{
-            console.log(x);
-        }
-        )
+    const [history,setHistory] = useState([]);
+    const getHistory= async() =>{
+        let user = JSON.parse(sessionStorage.getItem('user'));
+        let tempHistory = [];
+        await getUserHistory(user).then(doc=>{
+            doc.forEach(row=>{
+                tempHistory.push(row.data());
+            })
+        });
+        setHistory(tempHistory)
     }
     useEffect(()=>getHistory(),[]);
-    
     return(
             <Container >
                 <div className="PizzaCart">
                 <Table striped bordered hover>
                 <thead>
                     <tr>
-                    <th>Pizza</th>
+                    <th>Order</th>
                     <th>Price</th>
+                    <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>

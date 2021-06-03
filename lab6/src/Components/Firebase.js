@@ -30,14 +30,15 @@ export const login = async (email, password) =>{
 export const getPizzas = async() =>{
     return firestore.collection("pizzas").get();
 }
-export const getUserHistory = async() =>{
-    return firestore.collection("userHistory").get();
+export const getUserHistory = async(user) =>{
+    return firestore.collection("userHistory").where("owner","==",user.uid).get();
 }
 
 export const sendOrder = async(user,order,sumprice) =>{
     return firestore.collection("userHistory").add({
         owner: user.uid,
         order: order,
-        price: sumprice
+        price: sumprice,
+        date: Date()
     });
 }
