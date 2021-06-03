@@ -4,7 +4,16 @@ import {Container, Col,Image,Button} from 'react-bootstrap';
 import style from './../Styles/PizzaCard.css';
 export default function PageLogin(props){
     const addPizzaToOrder = () =>{
-        //session storage
+        let x = sessionStorage.getItem("order");
+        console.log(x,typeof(x));
+        if(x==null){
+            sessionStorage.setItem("order",JSON.stringify([{name: props.data.name, price: props.data.price, id: props.id}]))
+        }
+        else{
+            x = JSON.parse(x);
+            x.push({name: props.data.name, price: props.data.price, id: props.id});
+            sessionStorage.setItem("order",JSON.stringify(x));
+        }
     }
     return(
         <Col sm={12} md={6}>

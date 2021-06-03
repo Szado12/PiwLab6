@@ -2,15 +2,18 @@ import React,{useState} from 'react';
 import ReactDOM from 'react-dom';
 import {Container,Form,Button,Col,Row} from 'react-bootstrap';
 import style from './../Styles/PageLogin.css';
+import { useHistory } from "react-router-dom";
 import {login} from './Firebase.js'
 export default function PageLogin(props){
     const [password,setPassword] = useState("");
     const [email,setEmail] = useState("");
     const [message,setMessage] = useState("");
-
+    let history = useHistory();
     const loginUser = () =>{
         login(email,password).then(x=>{
-            console.log(x);
+            props.setUser(x.user);
+            sessionStorage.setItem("user",JSON.stringify(x.user));
+            history.push("/menu");
         })
         .catch(error =>
             setMessage(error.message));

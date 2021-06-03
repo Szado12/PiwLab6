@@ -19,12 +19,21 @@ else{
 }
 export const firestore = firebase.firestore();
 
+export const auth = firebase.auth();
+
 export const registryUser = async(email, password) =>{
-    return firebase.auth().createUserWithEmailAndPassword(email,password);
+    return auth.createUserWithEmailAndPassword(email,password);
 }
 export const login = async (email, password) =>{
-    return firebase.auth().signInWithEmailAndPassword(email,password);
+    return auth.signInWithEmailAndPassword(email,password);
 }
 export const getPizzas = async() =>{
     return firestore.collection("pizzas").get();
+}
+export const sendOrder = async(user,order,sumprice) =>{
+    return firestore.collection("userHistory").add({
+        owner: user.uid,
+        order: order,
+        price: sumprice
+    });
 }

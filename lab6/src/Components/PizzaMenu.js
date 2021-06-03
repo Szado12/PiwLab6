@@ -15,7 +15,7 @@ export default function PizzaMenu(props){
         });
         setPizzas(a);
     }
-    const  pizzasRendered = pizzas.map(x=> <PizzaCard data={x.data} key={x.key}/>);
+    const  pizzasRendered = pizzas.map(x=> <PizzaCard data={x.data} id={x.key} key={x.key}/>);
     console.log(pizzasRendered);
     useEffect(() =>{GetPizzasToRender()}, []);
     return(
