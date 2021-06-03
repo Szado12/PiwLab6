@@ -2,6 +2,7 @@ import './App.css';
 import PizzaNavbar from './Components/PizzaNavbar.js';
 import PizzaMenu from './Components/PizzaMenu.js';
 import PageLogin from './Components/PageLogin.js';
+import PageRegistry from './Components/PageRegistry.js';
 import React, {useEffect, useState} from "react";
 import {Row,Container,Col,Navbar, Nav, Button} from 'react-bootstrap';
 import {v4 as uuidv4 } from "uuid";
@@ -14,11 +15,14 @@ function App()
       <div className="App"> 
       <HashRouter>
         <PizzaNavbar></PizzaNavbar>
-        <Route exact path="/home">
+        <Route exact path="/menu">
           <PizzaMenu/>
         </Route>
         <Route exact path="/login">
           <PageLogin/>
+        </Route>
+        <Route exact path="/registry">
+          <PageRegistry/>
         </Route>
       </HashRouter>
       </div>

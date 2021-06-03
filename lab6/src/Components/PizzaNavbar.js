@@ -15,9 +15,7 @@ export default function PizzaNavbar(props){
             />
             </Navbar.Brand>
             <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link href="#menu">Menu</Nav.Link>
             </Nav>
             <Nav className="ml-auto">
             <Nav.Link href="#login">Login</Nav.Link>
