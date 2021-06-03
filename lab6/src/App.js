@@ -4,6 +4,7 @@ import PizzaMenu from './Components/PizzaMenu.js';
 import PageLogin from './Components/PageLogin.js';
 import PizzaCart from './Components/PizzaCart.js';
 import PageRegistry from './Components/PageRegistry.js';
+import UserHistory from './Components/UserHistory.js';
 import React, {useEffect, useState} from "react";
 import {Row,Container,Col,Navbar, Nav, Button} from 'react-bootstrap';
 import {Route,HashRouter,Redirect} from "react-router-dom";
@@ -19,6 +20,9 @@ function App()
         <PizzaNavbar user={user} setUser={setUser}></PizzaNavbar>
         <Route exact path="/menu">
           <PizzaMenu/>
+        </Route>
+        <Route exact path="/user">
+          <UserHistory/>
         </Route>
         <Route exact path="/login">
           <PageLogin setUser={setUser}/>
