@@ -1,7 +1,7 @@
 import React,{useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import {Button,Table,Container} from 'react-bootstrap';
-import style from './../Styles/PizzaCart.css';
+import {Table,Container} from 'react-bootstrap';
+import './../Styles/PizzaCart.css';
 import {getUserHistory} from './Firebase.js';
 export default function UserHistory(){
     const [history,setHistory] = useState([]);
@@ -10,11 +10,13 @@ export default function UserHistory(){
         let tempHistory = [];
         await getUserHistory(user).then(doc=>{
             doc.forEach(row=>{
-                tempHistory.push(row.data());
+                tempHistory.push({data:row.data(),key: row.id});
             })
         });
-        setHistory(tempHistory)
+        setHistory(tempHistory);
     }
+    
+    const render = history.map(x=><tr key={x.key}><td>{x.data.date}</td><td>{x.data.order.map(y=>y.name + "\n")}</td><td>{x.data.price} PLN</td></tr>)
     useEffect(()=>getHistory(),[]);
     return(
             <Container >
@@ -22,12 +24,13 @@ export default function UserHistory(){
                 <Table striped bordered hover>
                 <thead>
                     <tr>
+                    <th>Date</th>
                     <th>Order</th>
                     <th>Price</th>
-                    <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {render}
                 </tbody>
                 </Table>
                 

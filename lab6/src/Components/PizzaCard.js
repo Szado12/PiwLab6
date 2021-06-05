@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Container, Col,Image,Button} from 'react-bootstrap';
-import style from './../Styles/PizzaCard.css';
+import {Col,Image,Button} from 'react-bootstrap';
+import './../Styles/PizzaCard.css';
 export default function PageLogin(props){
     const addPizzaToOrder = () =>{
         let x = sessionStorage.getItem("order");
-        console.log(x,typeof(x));
         if(x==null){
             sessionStorage.setItem("order",JSON.stringify([{name: props.data.name, price: props.data.price, id: props.id}]))
         }

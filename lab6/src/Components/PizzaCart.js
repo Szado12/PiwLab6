@@ -1,7 +1,7 @@
-import React,{useState, useEffect } from 'react';
+import React,{useState} from 'react';
 import ReactDOM from 'react-dom';
 import {Button,Table,Container} from 'react-bootstrap';
-import style from './../Styles/PizzaCart.css';
+import './../Styles/PizzaCart.css';
 import {sendOrder} from './Firebase.js';
 export default function PizzaCart(props){
 
@@ -13,7 +13,7 @@ export default function PizzaCart(props){
         sessionStorage.setItem("order",JSON.stringify(x));
     }
     const send = () =>{
-        let price = order.reduce((total, currentValue) => total = total + currentValue.price,0);
+        let price = order.reduce((total, currentValue) => total = total + currentValue.price,0).toFixed(2);
         let orderMin = order.map(x => {return {id: x.id, name: x.name}});
         let user = JSON.parse(sessionStorage.getItem("user"));
         sendOrder(user, orderMin, price).then(
@@ -33,8 +33,8 @@ export default function PizzaCart(props){
     }
     else
     {
-        let card = order.map(x => 
-        <tr>
+        let cart = order.map(x => 
+        <tr key={x.id}>
             <td>{x.name}</td>
             <td>{x.price}</td>
             <td>
@@ -42,7 +42,7 @@ export default function PizzaCart(props){
             </td>
         </tr>
         );
-        let price = order.reduce((total, currentValue) => total = total + currentValue.price,0);
+        let price = order.reduce((total, currentValue) => total = total + currentValue.price,0).toFixed(2);
         return(
             <Container >
                 <div className="PizzaCart">
@@ -54,7 +54,7 @@ export default function PizzaCart(props){
                     </tr>
                 </thead>
                 <tbody>
-                    {card}
+                    {cart}
                     <tr>
                     <td>Price</td>
                     <td>{price}</td>

@@ -1,7 +1,7 @@
 import React,{useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import {Container, Row} from 'react-bootstrap';
-import style from './../Styles/Menu.css';
+import './../Styles/Menu.css';
 import PizzaCard from './PizzaCard.js';
 import {getPizzas} from './Firebase.js';
 export default function PizzaMenu(props){
@@ -16,7 +16,6 @@ export default function PizzaMenu(props){
         setPizzas(a);
     }
     const  pizzasRendered = pizzas.map(x=> <PizzaCard data={x.data} id={x.key} key={x.key}/>);
-    console.log(pizzasRendered);
     useEffect(() =>{GetPizzasToRender()}, []);
     return(
         <Container >

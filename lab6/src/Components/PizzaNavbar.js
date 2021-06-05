@@ -1,6 +1,6 @@
-import React,{useState} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import {Navbar,Nav,Form,Button,FormControl} from 'react-bootstrap';
+import {Navbar,Nav} from 'react-bootstrap';
 import logo from './../Images/logo.png';
 import {auth} from './Firebase.js';
 import { useHistory } from "react-router-dom";
@@ -53,6 +53,7 @@ export default function PizzaNavbar(props){
                 </Navbar.Brand>
                 <Nav className="mr-auto">
                 <Nav.Link href="#menu">Menu</Nav.Link>
+                <Nav.Link href="#create">Create</Nav.Link>
                 </Nav>
                 <Nav className="ml-auto">
                 <Nav.Link href="#cart"><ShoppingCartIcon/></Nav.Link>

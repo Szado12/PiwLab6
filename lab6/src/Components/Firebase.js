@@ -1,6 +1,7 @@
 import firebase from "firebase/app"
 import "firebase/auth"
 import "firebase/firestore"
+import moment from "moment"
 
 const firebaseConfig = {
     apiKey: "AIzaSyBu-KsvvWRb7yaItu_6-iMFGjrjsn_cRcs",
@@ -33,12 +34,14 @@ export const getPizzas = async() =>{
 export const getUserHistory = async(user) =>{
     return firestore.collection("userHistory").where("owner","==",user.uid).get();
 }
-
+export const getIngredients = async() =>{
+    return firestore.collection("ingredients").get();
+}
 export const sendOrder = async(user,order,sumprice) =>{
     return firestore.collection("userHistory").add({
         owner: user.uid,
         order: order,
         price: sumprice,
-        date: Date()
+        date: moment(new Date()).format("DD-MM-YYYY")
     });
 }

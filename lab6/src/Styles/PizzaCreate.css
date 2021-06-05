@@ -1,0 +1,32 @@
+
+.PizzaCreate{
+    background-color: rgba(255, 255, 255, 0.9);
+    height: 90vh;
+    width: 100%;
+    text-align: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    text-align: center;
+}
+.PizzaCreate::-webkit-scrollbar {
+    display: none;
+  }
+.PizzaCreate button{
+    margin: 10px;
+}
+  /* Hide scrollbar for IE, Edge and Firefox */
+.PizzaCreate {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.myCheckbox {
+	background-color: #fafafa;
+	border: 1px solid #cacece;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+	padding: 9px;
+  width: 20px;
+  height: 20px;
+	border-radius: 3px;
+  color:chartreuse;
+	display: inline-block;
+}

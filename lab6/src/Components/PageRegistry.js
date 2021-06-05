@@ -1,8 +1,9 @@
 import React,{useState} from 'react';
 import ReactDOM from 'react-dom';
-import {Container,Form,Button,Col,Row} from 'react-bootstrap';
+import {Container,Form,Button,Col} from 'react-bootstrap';
 import {registryUser} from './Firebase.js'
-import style from './../Styles/PageLogin.css';
+import './../Styles/PageLogin.css';
+import { useHistory } from "react-router-dom";
 
 
 
@@ -11,9 +12,9 @@ export default function PageRegistry(props){
     const [password2,setPassword2] = useState("");
     const [email,setEmail] = useState("");
     const [message,setMessage] = useState("");
-
+    let history = useHistory();
     const checkPassword = () =>{
-        if(password != password2){
+        if(password !== password2){
             setMessage("Passwords are not the same!");
             return false;
         }
@@ -23,6 +24,7 @@ export default function PageRegistry(props){
         if(checkPassword()){
             registryUser(email,password).then(x=>{
                 console.log(x);
+                history.push("/login");
             })
             .catch(error =>
                 setMessage(error.message));

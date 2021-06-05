@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import ReactDOM from 'react-dom';
-import {Container,Form,Button,Col,Row} from 'react-bootstrap';
-import style from './../Styles/PageLogin.css';
+import {Container,Form,Button,Col} from 'react-bootstrap';
+import './../Styles/PageLogin.css';
 import { useHistory } from "react-router-dom";
 import {login} from './Firebase.js'
 export default function PageLogin(props){

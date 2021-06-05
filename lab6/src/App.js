@@ -3,17 +3,15 @@ import PizzaNavbar from './Components/PizzaNavbar.js';
 import PizzaMenu from './Components/PizzaMenu.js';
 import PageLogin from './Components/PageLogin.js';
 import PizzaCart from './Components/PizzaCart.js';
+import PizzaCreate from './Components/PizzaCreate.js';
 import PageRegistry from './Components/PageRegistry.js';
 import UserHistory from './Components/UserHistory.js';
-import React, {useEffect, useState} from "react";
-import {Row,Container,Col,Navbar, Nav, Button} from 'react-bootstrap';
+import React, {useState} from "react";
 import {Route,HashRouter,Redirect} from "react-router-dom";
-import useSessionStorageState from "./Components/State.js"
-import style from "./App.css";
 
 function App() 
 {
-  const [user,setUser] = useState(null);
+  const [user,setUser] = useState(JSON.parse(sessionStorage.getItem('user')));
       return (
       <div className="App"> 
       <HashRouter>
@@ -21,18 +19,42 @@ function App()
         <Route exact path="/menu">
           <PizzaMenu/>
         </Route>
-        <Route exact path="/user">
-          <UserHistory/>
-        </Route>
+        <Route
+            path='/user'
+            render={() =>
+              user != null ? (
+                <UserHistory />
+              ) : (
+                <Redirect to='/login' />
+              )
+            }
+          />
         <Route exact path="/login">
           <PageLogin setUser={setUser}/>
         </Route>
         <Route exact path="/registry">
           <PageRegistry/>
         </Route>
-        <Route exact path="/cart">
-          <PizzaCart/>
-        </Route>
+        <Route
+            path='/cart'
+            render={() =>
+              user != null ? (
+                <PizzaCart />
+              ) : (
+                <Redirect to='/login' />
+              )
+            }
+          />
+          <Route
+            path='/create'
+            render={() =>
+              user != null ? (
+                <PizzaCreate />
+              ) : (
+                <Redirect to='/login' />
+              )
+            }
+          />
       </HashRouter>
       </div>
     );
